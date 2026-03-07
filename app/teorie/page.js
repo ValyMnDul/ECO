@@ -26,12 +26,12 @@ export default function TeoriePage() {
         </div>
 
         <Tabs defaultValue="introducere" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-8">
-            <TabsTrigger value="introducere">Introducere</TabsTrigger>
-            <TabsTrigger value="forme">Forme de Productivitate</TabsTrigger>
-            <TabsTrigger value="formule">Formule</TabsTrigger>
-            <TabsTrigger value="factori">Factori de Influență</TabsTrigger>
-            <TabsTrigger value="concepte">Concepte Cheie</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 h-auto mb-8 p-2">
+            <TabsTrigger value="introducere" className="data-[state=active]:bg-blue-100 dark:data-[state=active]:bg-blue-900">Introducere</TabsTrigger>
+            <TabsTrigger value="forme" className="data-[state=active]:bg-blue-100 dark:data-[state=active]:bg-blue-900">Forme</TabsTrigger>
+            <TabsTrigger value="formule" className="data-[state=active]:bg-blue-100 dark:data-[state=active]:bg-blue-900">Formule</TabsTrigger>
+            <TabsTrigger value="factori" className="data-[state=active]:bg-blue-100 dark:data-[state=active]:bg-blue-900">Factori</TabsTrigger>
+            <TabsTrigger value="concepte" className="data-[state=active]:bg-blue-100 dark:data-[state=active]:bg-blue-900">Concepte</TabsTrigger>
           </TabsList>
 
           <TabsContent value="introducere" className="animate-fade-in">

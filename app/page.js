@@ -3,12 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
+import { useLanguage } from '@/lib/LanguageContext'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { BookOpen, Calculator, FileText, GraduationCap, BarChart3, Library, Moon, Sun, TrendingUp, Award } from 'lucide-react'
+import { BookOpen, Calculator, FileText, GraduationCap, BarChart3, Library, Moon, Sun, TrendingUp, Award, Languages } from 'lucide-react'
 
 export default function Home() {
   const { theme, setTheme } = useTheme()
+  const { language, toggleLanguage, t } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -17,50 +19,71 @@ export default function Home() {
 
   const menuItems = [
     {
-      title: 'Teorie',
-      description: 'Concepte fundamentale despre productivitatea factorilor de producție',
+      title: t('theory'),
+      titleRO: 'Teorie',
+      titleEN: 'Theory',
+      descriptionRO: 'Concepte fundamentale despre productivitatea factorilor de producție',
+      descriptionEN: 'Fundamental concepts about production factors productivity',
       icon: BookOpen,
       href: '/teorie',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'Scheme Didactice',
-      description: 'Vizualizări grafice și scheme interactive',
+      title: t('schemes'),
+      titleRO: 'Scheme Didactice',
+      titleEN: 'Educational Schemes',
+      descriptionRO: 'Vizualizări grafice și scheme interactive',
+      descriptionEN: 'Graphical visualizations and interactive schemes',
       icon: BarChart3,
       href: '/scheme',
       color: 'from-green-500 to-emerald-500'
     },
     {
-      title: 'Calculator Interactiv',
-      description: 'Calculează productivitatea factorilor de producție',
+      title: t('calculator'),
+      titleRO: 'Calculator Interactiv',
+      titleEN: 'Interactive Calculator',
+      descriptionRO: 'Calculează productivitatea factorilor de producție',
+      descriptionEN: 'Calculate production factors productivity',
       icon: Calculator,
       href: '/calculator',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'Fișe de Lucru',
-      description: 'Exerciții și aplicații practice',
+      title: t('worksheets'),
+      titleRO: 'Fișe de Lucru',
+      titleEN: 'Worksheets',
+      descriptionRO: 'Descarcă fișierele pentru exerciții',
+      descriptionEN: 'Download worksheet files',
       icon: FileText,
       href: '/fise',
       color: 'from-orange-500 to-red-500'
     },
     {
-      title: 'Lecții Online',
-      description: 'Resurse educaționale și platforme de învățare',
+      title: t('lessons'),
+      titleRO: 'Lecții Online',
+      titleEN: 'Online Lessons',
+      descriptionRO: 'Resurse educaționale și platforme de învățare',
+      descriptionEN: 'Educational resources and learning platforms',
       icon: GraduationCap,
       href: '/lectii',
       color: 'from-indigo-500 to-blue-500'
     },
     {
-      title: 'Evaluare',
-      description: 'Testează-ți cunoștințele cu teste interactive',
+      title: t('evaluation'),
+      titleRO: 'Evaluare',
+      titleEN: 'Evaluation',
+      descriptionRO: 'Testează-ți cunoștințele cu teste interactive',
+      descriptionEN: 'Test your knowledge with interactive tests',
       icon: Award,
       href: '/evaluare',
       color: 'from-pink-500 to-rose-500'
     },
     {
-      title: 'Bibliografie',
-      description: 'Surse și resurse utilizate',
+      title: t('bibliography'),
+      titleRO: 'Bibliografie',
+      titleEN: 'Bibliography',
+      descriptionRO: 'Surse și resurse utilizate',
+      descriptionEN: 'Sources and resources used',
       icon: Library,
       href: '/bibliografie',
       color: 'from-teal-500 to-cyan-500'
@@ -74,36 +97,47 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <TrendingUp className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">Productivitatea Factorilor</h1>
+            <h1 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white truncate">
+              {language === 'ro' ? 'Productivitatea Factorilor' : 'Production Factors'}
+            </h1>
           </div>
           {mounted && (
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleLanguage}
+                title={language === 'ro' ? 'Switch to English' : 'Schimbă în Română'}
+              >
+                <Languages className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </Button>
+            </div>
           )}
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
+      <section className="container mx-auto px-4 py-12 md:py-16 text-center">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
-            Productivitatea Factorilor de Producție
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text">
+            {t('mainTitle')}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            Platformă educațională interactivă dedicată înțelegerii conceptelor economice fundamentale
-            despre productivitate și eficiența utilizării resurselor
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            {t('subtitle')}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-              <Link href="/teorie">Începe Lecția</Link>
+              <Link href="/teorie">{t('startLesson')}</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/evaluare">Testează-ți Cunoștințele</Link>
+              <Link href="/evaluare">{t('testKnowledge')}</Link>
             </Button>
           </div>
         </div>
@@ -115,19 +149,19 @@ export default function Home() {
           <Card className="text-center border-t-4 border-t-blue-500">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-blue-600">7</CardTitle>
-              <CardDescription>Secțiuni Interactive</CardDescription>
+              <CardDescription>{t('sections')}</CardDescription>
             </CardHeader>
           </Card>
           <Card className="text-center border-t-4 border-t-green-500">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-green-600">50+</CardTitle>
-              <CardDescription>Întrebări de Evaluare</CardDescription>
+              <CardDescription>{t('questions')}</CardDescription>
             </CardHeader>
           </Card>
           <Card className="text-center border-t-4 border-t-purple-500">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-purple-600">100%</CardTitle>
-              <CardDescription>Conținut Original</CardDescription>
+              <CardDescription>{t('content')}</CardDescription>
             </CardHeader>
           </Card>
         </div>
@@ -135,8 +169,8 @@ export default function Home() {
 
       {/* Menu Cards */}
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-          Explorează Conținutul
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          {t('exploreContent')}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {menuItems.map((item, index) => {
@@ -148,8 +182,12 @@ export default function Home() {
                     <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                       <Icon className="h-7 w-7 text-white" />
                     </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                    <CardDescription className="text-base">{item.description}</CardDescription>
+                    <CardTitle className="text-xl">
+                      {language === 'ro' ? item.titleRO : item.titleEN}
+                    </CardTitle>
+                    <CardDescription className="text-base">
+                      {language === 'ro' ? item.descriptionRO : item.descriptionEN}
+                    </CardDescription>
                   </CardHeader>
                 </Card>
               </Link>
@@ -162,14 +200,13 @@ export default function Home() {
       <section className="container mx-auto px-4 py-16">
         <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 border-none">
           <CardHeader>
-            <CardTitle className="text-3xl text-center mb-4">Ce este Productivitatea?</CardTitle>
+            <CardTitle className="text-2xl md:text-3xl text-center mb-4">
+              {t('whatIsProductivity')}
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-lg text-gray-700 dark:text-gray-300 text-center max-w-4xl mx-auto leading-relaxed">
-              Productivitatea reprezintă <strong>motorul creșterii economice</strong>, reflectând eficiența cu care 
-              sunt transformați factorii de producție (muncă, capital, pământ) în bunuri și servicii. 
-              Creșterea productivității duce la reducerea costurilor, creșterea profiturilor și îmbunătățirea 
-              competitivității, permițând mărirea salariilor fără creșteri inflaționiste.
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 text-center max-w-4xl mx-auto leading-relaxed">
+              {t('productivityDesc')}
             </p>
           </CardContent>
         </Card>
@@ -178,8 +215,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t bg-white dark:bg-gray-900 py-8 mt-16">
         <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-          <p>© 2025 - Proiect pentru Concursul Național Interdisciplinar</p>
-          <p className="text-sm mt-2">"Istorie și Societate în Dimensiune Virtuală"</p>
+          <p>© 2025 - {t('footerText')}</p>
+          <p className="text-sm mt-2">{t('footerSubtext')}</p>
         </div>
       </footer>
     </div>
