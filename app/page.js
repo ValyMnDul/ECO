@@ -215,7 +215,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t bg-white dark:bg-gray-900 py-8 mt-16">
         <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-          <p>© 2025 - {t('footerText')}</p>
+          <p>© 2026 - {t('footerText')}</p>
           <p className="text-sm mt-2">{t('footerSubtext')}</p>
         </div>
       </footer>

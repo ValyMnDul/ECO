@@ -3,39 +3,27 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { ArrowLeft, Library, Book, FileText, Globe } from 'lucide-react'
+import { ArrowLeft, Library, Book } from 'lucide-react'
 
 export default function BibliografiePage() {
   const sources = [
     {
-      type: 'Manuale',
+      type: 'Bibliografie',
       icon: Book,
       color: 'blue',
       items: [
-        'Manual de Economie pentru liceu, Editura Didactică și Pedagogică',
-        'Economia - manual pentru clasa a XI-a, Editura Economică',
-        'Principiile Economiei, N. Gregory Mankiw'
-      ]
-    },
-    {
-      type: 'Articole Academice',
-      icon: FileText,
-      color: 'green',
-      items: [
-        'Solow, R. M. (1957). Technical Change and the Aggregate Production Function',
-        'Krugman, P. (1994). The Age of Diminished Expectations',
-        'Acemoglu, D. (2019). Automation and New Tasks'
-      ]
-    },
-    {
-      type: 'Resurse Online',
-      icon: Globe,
-      color: 'purple',
-      items: [
-        'Investopedia - Economic Productivity',
-        'Khan Academy - Microeconomics',
-        'OECD - Productivity Statistics',
-        'World Bank - Economic Data'
+        'Ailenei, Dorel; Bălan, Elena, Manual de economie, Editura All, 2018.',
+        'Avram, C. D., Microeconomie: concepte, legități, teorii, Editura Universitaria, București, 2018.',
+        'Bălăceanu, Cristina, Microeconomie, Editura C.H. Beck, București, 2021.',
+        'Crețoiu, Gh.; Cornescu, V.; Bucur, I., Economie, ed. a III-a, Editura C.H. Beck, București, 2011.',
+        'Ionescu, A. (coord.), Microeconomie. Teorie și aplicații, Editura Pro Universitaria, București, 2022.',
+        'Lipsey, Richard G.; Chrystal, Alec K., Principiile economiei, Editura Economică, București, 2002.',
+        'Lupșa, Elena, Manual de economie, clasa a XI-a, Editura Delfin, 2022.',
+        'Marinaș, M.C., Microeconomia explicată pe înțelesul studenților, Editura ASE, București, 2021.',
+        'Mungiu-Pupăzan, C.; Ilie Băbăiță, Microeconomie, Editura Academica Brâncuși, Târgu Jiu, 2008.',
+        'Pociovălișteanu, Diana-Mihaela, Teorie economică generală. Elemente de microeconomie, Editura Universitaria, 2007.',
+        'Serban, Andreea Claudia; Aceleanu, Mirela Ionela, Microeconomie, Editura ASE, București, 2019.',
+        'Stiglitz, J.; Walsh, C., Economie, Editura Economică, București, 2005.'
       ]
     }
   ]
@@ -62,7 +50,7 @@ export default function BibliografiePage() {
           </CardHeader>
           <CardContent>
             <p className="text-lg leading-relaxed">
-              Proiect bazat pe surse academice, manuale școlare și resurse online verificate.
+              Proiect bazat pe surse academice și manuale școlare verificate.
             </p>
           </CardContent>
         </Card>

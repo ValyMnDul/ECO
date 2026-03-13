@@ -29,7 +29,7 @@ export default function EvaluarePage() {
     {
       id: 'test2',
       title: 'Test 2 - Formule și Calcule',
-      description: 'Aplicarea formulelor de calcul al productivității',
+      description: 'Aplicarea eficientă și corectă a formulelor de calcul al productivității.',
       duration: 20,
       questions: 10,
       difficulty: 'Mediu'
@@ -37,7 +37,7 @@ export default function EvaluarePage() {
     {
       id: 'test3',
       title: 'Test 3 - Analiză și Aplicații',
-      description: 'Analiză avansată și studii de caz',
+      description: 'Analiză avansată detaliată și studii de caz practice relevante pentru evaluare.',
       duration: 25,
       questions: 15,
       difficulty: 'Avansat'
